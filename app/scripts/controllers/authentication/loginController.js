@@ -11,7 +11,7 @@ angular.module(ApplicationConfiguration.applicationModuleName)
       var token = CryptoUtil.getRandomToken();
 
       var input = {
-        token: CryptoUtil.getRandomToken(),
+        token: token,
         digest: CryptoUtil.MD5Base64Encoded($scope.user.username + ',' + hash + ',' + token),
         user: {
           username: $scope.user.username,
@@ -21,9 +21,13 @@ angular.module(ApplicationConfiguration.applicationModuleName)
 
       SRAAuth.$login(input).then(
         function (response) {
-          localStorageService.set('crossover', response);
-          Auth.init(response);
-          $state.go('app.home');
+          if(response.sessionId) {
+            localStorageService.set('crossover', response);
+            Auth.init(response);
+            $state.go('app.home');
+          } else {
+            toastr.error('Username and/or password incorrect.');
+          }
         }, function error(err) {
           toastr.error(err);
         }

@@ -23,8 +23,8 @@ angular.module(ApplicationConfiguration.applicationModuleName).provider('sra', f
     $login: function (input) {
       return SRARestangular.all('authenticate').post(input);
     },
-    $logout: function () {
-      var input = {'sessionId': Auth.sessionId};
+    $logout: function (sessionId) {
+      var input = {'sessionId': sessionId};
       return SRARestangular.all('logout').post(input);
     }
   };
