@@ -63,7 +63,7 @@ angular.module('customer').controller('Customer.ListController', ['$scope', '$st
     };
     $scope.loadCustomers();
 
-    $scope.edit = function(customer) {
+    $scope.edit = function (customer) {
       $state.go('customer.detail', {customerId: customer.id});
     };
 

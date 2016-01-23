@@ -4,33 +4,49 @@
 angular.module('login').controller('LoginController', ['$scope', 'SRAAuthenticate', 'SRALogout',
   function ($scope, SRAAuthenticate, SRALogout) {
 
-    console.log('rerere');
-
-    $scope.package = {
-      name: 'login'
-    };
-
-    $scope.view = {
+    var token = 'QCiTzbXCAYA3AvDgYN3MuBwY/1i89q6TfW7aVS1Av1c=';
+    $scope.user = {
       username: undefined,
       password: undefined
     };
 
-    var input2 = {
-      token: 'QCiTzbXCAYA3AvDgYN3MuBwY/1i89q6TfW7aVS1Av1c=',
-      digest: '6R1HZqYJFfRQUA0L/hqCEA==',
-      user: {username: 'john.doe', password: 'X03MO1qnZdYdgyfeuILPmQ=='}
+
+    var rand = function() {
+      return Math.random().toString(36).substr(2); // remove `0.`
     };
 
+    var tokenGenerator = function() {
+      return rand() + rand(); // to make it longer
+    };
+
+    token = tokenGenerator();
+
+
     $scope.login = function () {
-      //$scope.accounts = Restangular.all('accounts').getList().$object;
-      SRAAuthenticate.$login(input2).then(
+      var passwordHash = CryptoJS.MD5($scope.user.password);
+      passwordHash = passwordHash.toString(CryptoJS.enc.Base64);
+
+      var digest = $scope.user.username + ',' + passwordHash + ',' + token;
+      digest = CryptoJS.MD5(digest);
+      digest = digest.toString(CryptoJS.enc.Base64);
+
+      var input= {
+        token: token,
+        digest: digest,
+        user: {
+          username: $scope.user.username,
+          password: passwordHash
+        }
+      };
+
+      SRAAuthenticate.$login(input).then(
         function (response) {
           console.log(response);
         }, function error(err) {
           console.log(err);
         }
       );
-      $scope.logout();
+
     };
 
     $scope.logout = function () {

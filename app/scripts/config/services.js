@@ -1,7 +1,7 @@
 'use strict';
 
 //Menu service used for managing  menus
-angular.module('mean').service('Menus', [
+angular.module(ApplicationConfiguration.applicationModuleName).service('Menus', [
   function () {
 
     // Define the menus object
@@ -145,5 +145,6 @@ angular.module('mean').service('Menus', [
     this.addMenu('topbar', {
       roles: ['*']
     });
+
   }
 ]);

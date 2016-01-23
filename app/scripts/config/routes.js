@@ -1,18 +1,10 @@
 'use strict';
 
 // Setting up route
-angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
+angular.module(ApplicationConfiguration.applicationModuleName).config(['$stateProvider', '$urlRouterProvider',
   function ($stateProvider, $urlRouterProvider) {
 
-    // Redirect to 404 when route not found
-   /* $urlRouterProvider.otherwise(function ($injector) {
-      $injector.get('$state').transitionTo('not-found', null, {
-        location: false
-      });
-    });*/
-
     $urlRouterProvider.otherwise('/');
-
 
     // Home state routing
     $stateProvider
@@ -41,5 +33,6 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
           ignoreState: true
         }
       });
+
   }
 ]);

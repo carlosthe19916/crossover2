@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('mean').controller('HeaderController', ['$scope', '$state', 'Menus',
+angular.module(ApplicationConfiguration.applicationModuleName).controller('HeaderController', ['$scope', '$state', 'Menus',
   function ($scope, $state, Menus) {
+
     // Expose view variables
     $scope.$state = $state;
 
@@ -18,5 +19,6 @@ angular.module('mean').controller('HeaderController', ['$scope', '$state', 'Menu
     $scope.$on('$stateChangeSuccess', function () {
       $scope.isCollapsed = false;
     });
+
   }
 ]);
