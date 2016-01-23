@@ -4,34 +4,38 @@
 angular.module(ApplicationConfiguration.applicationModuleName).config(['$stateProvider', '$urlRouterProvider',
   function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/app/home');
 
-    // Home state routing
+    var checkLogin = function ($q, $timeout, $location, Auth) {
+      var deferred = $q.defer();
+      if (Auth.isAuthenticated()) {
+        $timeout(deferred.resolve);
+      } else {
+        $timeout(deferred.reject);
+        $location.path('/login');
+      }
+      return deferred.promise;
+    };
+
+    // State routing
     $stateProvider
-      .state('home', {
-        url: '/',
+      .state('login', {
+        url: '/login',
+        templateUrl: 'login.html',
+        controller: 'LoginController'
+      })
+      .state('app', {
+        url: '/app',
+        templateUrl: 'app.html',
+        resolve: {
+          loggedin: function ($q, $timeout, $location, Auth) {
+            return checkLogin($q, $timeout, $location, Auth);
+          }
+        }
+      })
+      .state('app.home', {
+        url: '/home',
         templateUrl: 'home.html'
-      })
-      .state('not-found', {
-        url: '/not-found',
-        templateUrl: '404.html',
-        data: {
-          ignoreState: true
-        }
-      })
-      .state('bad-request', {
-        url: '/bad-request',
-        templateUrl: '400.html',
-        data: {
-          ignoreState: true
-        }
-      })
-      .state('forbidden', {
-        url: '/forbidden',
-        templateUrl: '403.html',
-        data: {
-          ignoreState: true
-        }
       });
 
   }

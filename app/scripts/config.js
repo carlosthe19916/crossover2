@@ -24,7 +24,7 @@ var ApplicationConfiguration = (function () {
     'patternfly',
     'restangular',
     'toastr',
-    'crossover.sra'
+    'LocalStorageModule'
   ];
 
   // Add a new vertical module

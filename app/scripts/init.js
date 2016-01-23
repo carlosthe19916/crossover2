@@ -14,6 +14,13 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(function (
   sraProvider.restUrl = 'http://localhost:8080/SRA';
 });
 
+angular.module(ApplicationConfiguration.applicationModuleName).run(function (localStorageService, Auth) {
+  var session = localStorageService.get('crossover');
+  if(session) {
+    Auth.init(session);
+  }
+});
+
 //Then define the init function for starting up the application
 angular.element(document).ready(function () {
 

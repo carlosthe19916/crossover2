@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Crossover</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -35,11 +35,8 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <nav data-ng-include="'header.html'" class="navbar navbar-default navbar-pf"></nav>
-    <div class="container-fluid">
-      <section ui-view></section>
-    </div>
+    <!-- Application content here -->
+    <div ui-view></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -76,6 +73,7 @@
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/patternfly/dist/js/patternfly.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -83,26 +81,16 @@
     <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
     <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js"></script>
 
-    <script src="/scripts/sra_auth.js"></script>
-    <script src="/scripts/sra_rest.js"></script>
     <script src="/scripts/config.js"></script>
     <script src="/scripts/init.js"></script>
-    <script src="/modules/customer/customer.client.module.js"></script>
-    <script src="/modules/customer/config/customer.client.config.js"></script>
-    <script src="/modules/customer/config/customer.client.routes.js"></script>
-    <script src="/modules/customer/controllers/detail.client.controller.js"></script>
-    <script src="/modules/customer/controllers/detail.notes.client.controller.js"></script>
-    <script src="/modules/customer/controllers/detail.visit.client.controller.js"></script>
-    <script src="/modules/customer/controllers/list.client.controller.js"></script>
-    <script src="/modules/login/login.client.module.js"></script>
-    <script src="/modules/login/config/admin.client.config.js"></script>
-    <script src="/modules/login/config/admin.client.routes.js"></script>
-    <script src="/modules/login/controllers/admin.client.controller.js"></script>
-    <script src="/modules/login/services/admin.client.service.js"></script>
     <script src="/scripts/config/header.js"></script>
+    <script src="/scripts/config/menus.js"></script>
     <script src="/scripts/config/routes.js"></script>
-    <script src="/scripts/config/services.js"></script>
     <script src="/scripts/controllers/main.js"></script>
+    <script src="/scripts/controllers/authentication/loginController.js"></script>
+    <script src="/scripts/factories/auth.js"></script>
+    <script src="/scripts/factories/models.js"></script>
+    <script src="/scripts/factories/utils.js"></script>
     <!-- endbuild -->
 
 </body>

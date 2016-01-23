@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Crossover</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -29,11 +29,8 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <nav data-ng-include="'header.html'" class="navbar navbar-default navbar-pf"></nav>
-    <div class="container-fluid">
-      <section ui-view></section>
-    </div>
+    <!-- Application content here -->
+    <div ui-view></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -55,11 +52,9 @@
     <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
     <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js"></script>
 
-    <script src="/scripts/sra_auth.js"></script>
-    <script src="/scripts/sra_rest.js"></script>
     <script src="/scripts/config.js"></script>
     <script src="/scripts/init.js"></script>
-    <!-- include: "type": "js", "ordering": "top-down", "files": ["scripts/**/*.js", "modules/**/*.js", "!scripts/sra_auth.js", "!scripts/sra_rest.js", "!scripts/config.js", "!scripts/init.js"] -->
+    <!-- include: "type": "js", "ordering": "top-down", "files": ["scripts/**/*.js", "modules/**/*.js", "!scripts/config.js", "!scripts/init.js"] -->
     <!-- endbuild -->
 
 </body>

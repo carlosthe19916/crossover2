@@ -2,6 +2,11 @@ $icon-font-path: "../bower_components/patternfly-sass/assets/fonts/patternfly/";
 // bower:scss
 // endbower
 
+.login-pf {
+  background: url(../images/bg-login.jpg) 50% 0 repeat-x #080808;
+  background-size: auto;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
