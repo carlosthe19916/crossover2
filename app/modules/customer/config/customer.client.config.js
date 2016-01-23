@@ -6,7 +6,7 @@ angular.module('customer').run(['Menus',
     // Set top bar menu items
     Menus.addMenuItem('topbar', {
       title: 'Customers',
-      state: 'customer.search'
+      state: 'customer.list'
     });
 	}
 ]);

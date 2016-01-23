@@ -2,38 +2,38 @@
 
 // Setting up route
 angular.module('customer').config(['$stateProvider', '$urlRouterProvider',
-	function ($stateProvider, $urlRouterProvider) {
+  function ($stateProvider, $urlRouterProvider) {
 
-		$stateProvider
-			.state('customer', {
-				url: '/customers',
-				template: '<div ui-view></div>',
-				ncyBreadcrumb: {
-					skip: true // Never display this state in breadcrumb.
-				}
-			})
-			.state('customer.search', {
-				url: '/search',
-				templateUrl: 'modules/customer/views/search.html',
-        controller: 'Customer.SearchController',
-				ncyBreadcrumb: {
-					label: 'Home'
-				}
-			})
-      .state('customer.detail', {
-        url: '/:customerId/detail',
-        templateUrl: 'modules/customer/views/detail.html',
-        controller: 'Customer.DetailController',
+    $stateProvider
+      .state('customer', {
+        url: '/customers',
+        template: '<div ui-view></div>',
+        ncyBreadcrumb: {
+          skip: true
+        }
+      })
+
+      .state('customer.list', {
+        url: '/list',
+        templateUrl: 'modules/customer/views/list.html',
+        controller: 'Customer.ListController',
         ncyBreadcrumb: {
           label: 'Home'
         }
       })
-      .state('customer.detail.dashboard', {
-        url: '/dashboard',
-        templateUrl: 'modules/customer/views/detail_dashboard.html',
-        controller: 'Customer.Detail.DashboardController',
+
+      .state('customer.detail', {
+        url: '/:customerId/detail',
+        templateUrl: 'modules/customer/views/detail.html',
+        controller: 'Customer.DetailController',
+        resolve: {
+          customerDetail: function ($state, $stateParams, SRACustomer) {
+            return SRACustomer.$findDetail($stateParams.customerId);
+          }
+        },
         ncyBreadcrumb: {
-          label: 'Home'
+          label: 'Customer detail',
+          parent: 'customer.list'
         }
       })
       .state('customer.detail.notes', {
@@ -41,7 +41,7 @@ angular.module('customer').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'modules/customer/views/detail_notes.html',
         controller: 'Customer.Detail.NotesController',
         ncyBreadcrumb: {
-          label: 'Home'
+          label: 'Notes'
         }
       })
       .state('customer.detail.visit', {
@@ -49,8 +49,8 @@ angular.module('customer').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'modules/customer/views/detail_visit.html',
         controller: 'Customer.Detail.VisitController',
         ncyBreadcrumb: {
-          label: 'Home'
+          label: 'Visit'
         }
       });
-	}
+  }
 ]);

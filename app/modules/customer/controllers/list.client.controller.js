@@ -1,7 +1,7 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('customer').controller('Customer.SearchController', ['$scope', '$state',
+angular.module('customer').controller('Customer.ListController', ['$scope', '$state',
   function ($scope, $state) {
 
     $scope.package = {
@@ -64,7 +64,7 @@ angular.module('customer').controller('Customer.SearchController', ['$scope', '$
     $scope.loadCustomers();
 
     $scope.edit = function(customer) {
-      $state.go('customer.detail.dashboard', {customerId: customer.id});
+      $state.go('customer.detail', {customerId: customer.id});
     };
 
   }
