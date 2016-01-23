@@ -32,11 +32,15 @@ angular.module(ApplicationConfiguration.applicationModuleName).provider('sra', f
   return resources;
 }])
 
-  .factory('SRACustomer', ['SRARestangular', function (SRARestangular, Auth) {
+  .factory('SRACustomer', ['SRARestangular', 'Auth', function (SRARestangular, Auth) {
 
     var resources = {
+      $getAll: function () {
+        var input = {'sessionId': Auth.authz.sessionId};
+        return SRARestangular.all('customer/list').post(input);
+      },
       $findDetail: function (id) {
-        var input = {'sessionId': Auth.sessionId};
+        var input = {'sessionId': Auth.authz.sessionId};
         input.customerid = id;
         return SRARestangular.all('customer/details').post(input);
       },

@@ -4,6 +4,7 @@
 angular.module(ApplicationConfiguration.applicationModuleName).config(['$stateProvider', '$urlRouterProvider',
   function ($stateProvider, $urlRouterProvider) {
 
+    $urlRouterProvider.when('/app', '/app/home');
     $urlRouterProvider.otherwise('/app/home');
 
     var checkLogin = function ($q, $timeout, $location, Auth) {
@@ -31,6 +32,9 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$statePr
           loggedin: function ($q, $timeout, $location, Auth) {
             return checkLogin($q, $timeout, $location, Auth);
           }
+        },
+        ncyBreadcrumb: {
+          label: 'Home'
         }
       })
       .state('app.home', {

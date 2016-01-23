@@ -1,0 +1,54 @@
+<div ncy-breadcrumb></div>
+<h1>
+  <strong>Customer:</strong>&nbsp;
+  <span data-ng-bind="customerDetail.customername"></span>
+</h1>
+
+<fieldset class="border-top">
+  <legend><span class="text">Principal information</span></legend>
+  <div class="row">
+    <div class="col-sm-12">
+      <dl class="dl-horizontal left">
+        <dt>Customer name:</dt>
+        <dd data-ng-bind="customerDetail.customername"></dd>
+        <dt>Customer id:</dt>
+        <dd data-ng-bind="customerDetail.id"></dd>
+        <dt>Product name:</dt>
+        <dd data-ng-bind="customerDetail.productname"></dd>
+        <dt>Status:</dt>
+        <dd data-ng-bind="customerDetail.status"></dd>
+        <dt>Phone number:</dt>
+        <dd data-ng-bind=""></dd>
+        <dt>Email addres:</dt>
+        <dd data-ng-bind=""></dd>
+      </dl>
+    </div>
+  </div>
+</fieldset>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div>
+
+      <div class="tab-container">
+        <ul class="nav nav-tabs">
+          <li ui-sref-active="active">
+            <a href ui-sref=".notes">
+              Notes
+            </a>
+          </li>
+          <li ui-sref-active="active">
+            <a href ui-sref=".visit">
+              Visit
+            </a>
+          </li>
+        </ul>
+        <div class="tab-pane">
+          <br/>
+          <div ui-view></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
