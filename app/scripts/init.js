@@ -12,6 +12,23 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
     $locationProvider.hashPrefix('!');
   }
 ]);
+
+angular.module(ApplicationConfiguration.applicationModuleName).config(function ($httpProvider) {
+  $httpProvider.defaults.useXDomain = true;
+  $httpProvider.defaults.withCredentials = true;
+  delete $httpProvider.defaults.headers.common["X-Requested-With"];
+  $httpProvider.defaults.headers.common["Accept"] = "application/json";
+  $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+});
+
+angular.module(ApplicationConfiguration.applicationModuleName).config(function (sraProvider) {
+  sraProvider.restUrl = 'http://localhost:8080/SRA';
+});
+
+
+
+
+
 /* jshint ignore:end */
 
 //Then define the init function for starting up the application
@@ -39,3 +56,5 @@ angular.element(document).ready(function () {
     angular.bootstrap(document, [ApplicationConfiguration.applicationModuleName]);
 });
 /* jshint ignore:end */
+
+

@@ -23,7 +23,8 @@ var ApplicationConfiguration = (function () {
     'ui.utils.masks',
     'patternfly',
     'restangular',
-    'toastr'
+    'toastr',
+    'crossover.sra'
   ];
 
   // Add a new vertical module
