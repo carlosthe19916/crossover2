@@ -46,6 +46,7 @@ module.exports = function(config) {
       'bower_components/patternfly/dist/js/patternfly.js',
       'bower_components/jquery-ui/jquery-ui.js',
       'bower_components/angular-local-storage/dist/angular-local-storage.js',
+      'bower_components/jquery.maskedinput/dist/jquery.maskedinput.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/config.js",
