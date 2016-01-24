@@ -9,11 +9,6 @@ $navbar-pf-bg-color: #393F45 !default;
 @import "patternfly-sass/assets/stylesheets/_patternfly.scss";
 // endbower
 
-.login-pf {
-  background: url(../images/bg-login.jpg) 50% 0 repeat-x #080808;
-  background-size: auto;
-}
-
 .row.vdivide [class*='col-']:not(:last-child):after {
   background: #e0e0e0;
   width: 1px;
