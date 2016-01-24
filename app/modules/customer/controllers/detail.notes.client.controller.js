@@ -1,13 +1,16 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('customer').controller('Customer.Detail.NotesController', ['$scope', '$state', 'toastr', 'customerDetail', 'SRACustomer',
-  function ($scope, $state, toastr, customerDetail, SRACustomer) {
+angular.module('customer').controller('Customer.Detail.NotesController', ['$scope', '$state', 'toastr', 'customerDetail', 'SGDialog', 'SRACustomer',
+  function ($scope, $state, toastr, customerDetail, SGDialog, SRACustomer) {
+
+    $scope.working = false;
 
     $scope.customerDetail = customerDetail.data;
 
     $scope.view = {
-      notes: undefined
+      notes: undefined,
+      status: undefined
     };
 
     $scope.combo = {
@@ -20,13 +23,14 @@ angular.module('customer').controller('Customer.Detail.NotesController', ['$scop
         {value: 'Rejected', name: 'Rejected'}
       ]
     };
-    $scope.combo.selected ={
-      status: undefined
-    };
 
     $scope.save = function () {
-      SRACustomer.$saveNote($scope.note).then(function (response) {
-        toastr.success('Note successfully saved.');
+      SGDialog.confirm('Save', 'Are you sure to save the Note?', function () {
+        SRACustomer.$saveNote($scope.view).then(function (response) {
+          $scope.working = true;
+          toastr.success('Note successfully saved.');
+          $state.reload();
+        });
       });
     };
 
