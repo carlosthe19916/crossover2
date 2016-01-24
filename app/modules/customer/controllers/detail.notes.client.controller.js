@@ -4,6 +4,7 @@
 angular.module('customer').controller('Customer.Detail.NotesController', ['$scope', '$state', 'toastr', 'customerDetail', 'SGDialog', 'SRACustomer',
   function ($scope, $state, toastr, customerDetail, SGDialog, SRACustomer) {
 
+    // Disable Save button on submit for prevent double submit
     $scope.working = false;
 
     $scope.view = {
@@ -30,6 +31,13 @@ angular.module('customer').controller('Customer.Detail.NotesController', ['$scop
           $state.reload();
         });
       });
+    };
+
+    $scope.clear = function() {
+      $scope.view = {
+        notes: undefined,
+        status: undefined
+      };
     };
 
   }

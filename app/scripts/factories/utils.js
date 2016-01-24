@@ -1,6 +1,6 @@
 'use strict';
 
-//Utils
+// Crypto Utils
 angular.module(ApplicationConfiguration.applicationModuleName).factory('CryptoUtil', [
   function () {
 

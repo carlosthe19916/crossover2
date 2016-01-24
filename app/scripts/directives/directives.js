@@ -1,5 +1,6 @@
 'use strict';
 
+// Directives for common buttons
 angular.module(ApplicationConfiguration.applicationModuleName)
   .directive('sgSave', ['$compile', function ($compile) {
     return {

@@ -1,6 +1,6 @@
 'use strict';
 
-// Configuring the Chat module
+// Configuring the Customers module
 angular.module('customer').run(['Menus',
 	function (Menus) {
     // Set top bar menu items

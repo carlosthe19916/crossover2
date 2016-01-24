@@ -4,6 +4,7 @@
 angular.module('customer').controller('Customer.Detail.VisitController', ['$scope', '$state', 'toastr', 'customerDetail', 'SGDialog', 'SRACustomer',
   function ($scope, $state, toastr, customerDetail, SGDialog, SRACustomer) {
 
+    // Disable Save button on submit for prevent double submit
     $scope.working = false;
 
     $scope.view = {

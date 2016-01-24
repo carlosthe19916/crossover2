@@ -1,7 +1,15 @@
 'use strict';
 
-angular.module(ApplicationConfiguration.applicationModuleName).controller('HeaderController', ['$scope', '$state', 'Menus',
-  function ($scope, $state, Menus) {
+angular.module(ApplicationConfiguration.applicationModuleName).controller('HeaderController', ['$scope', '$state', 'Menus', 'SRAAuth', 'Auth',
+  function ($scope, $state, Menus, SRAAuth, Auth) {
+
+    $scope.user = Auth.authz.data;
+    $scope.logout = function () {
+      SRAAuth.$logout().then(function (response) {
+        Auth.clean();
+        $state.go('login');
+      });
+    };
 
     // Expose view variables
     $scope.$state = $state;

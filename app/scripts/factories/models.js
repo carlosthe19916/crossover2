@@ -1,5 +1,6 @@
 'use strict';
 
+//For configure base path or the web services
 angular.module(ApplicationConfiguration.applicationModuleName)
 
   .provider('sra', function () {

@@ -1,3 +1,6 @@
+'use strict';
+
+// Auth save the session user
 angular.module(ApplicationConfiguration.applicationModuleName).factory('Auth', function (localStorageService) {
     var auth = {
       authz: {},
