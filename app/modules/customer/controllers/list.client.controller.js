@@ -6,14 +6,6 @@ angular.module('customer').controller('Customer.ListController', ['$scope', '$st
 
     $scope.customers = [];
 
-
-
-    $scope.drinks = ['tea', 'coffee', 'water'];
-    $scope.pets = ['Dog', 'Cat', 'Chicken'];
-    $scope.pet = $scope.pets[0];
-    $scope.fruit = 'orange';
-
-
     $scope.filterOptions = {
       filter: {},
       filterBy: '$',
@@ -34,15 +26,19 @@ angular.module('customer').controller('Customer.ListController', ['$scope', '$st
     };
 
     $scope.refresh = function() {
-
+      $scope.filterOptions = {
+        filter: {},
+        filterBy: '$',
+        orderBy: undefined
+      };
     };
 
-    $scope.loadCustomers = function () {
+    $scope.search = function () {
       SRACustomer.$getAll().then(function(response){
         $scope.customers = response.data;
       });
     };
-    $scope.loadCustomers();
+    $scope.search();
 
     $scope.edit = function (customer) {
       $state.go('app.customer.detail', {customerId: customer.id});

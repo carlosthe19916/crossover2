@@ -4,33 +4,29 @@
 </h1>
 <hr>
 <form role="form">
-  <div class="row">
+  <div class="row vdivide">
     <div class="col-sm-4">
       <div class="form-group">
         <div class="input-group">
-          <select pf-select data-ng-model="filterOptions.filterBy" data-ng-options="item.value as item.name for item in combo.filterBy">
+          <select pf-select="{ noneSelectedText: '$' }" data-ng-model="filterOptions.filterBy" data-ng-options="item.value as item.name for item in combo.filterBy">
+            <option value="">No Filter</option>
           </select>
-          <input type="text" name="filterText" class="form-control" data-ng-model="dd" placeholder="Filter text" pf-focused="true" autofocus>
+          <input type="text" name="filterText" class="form-control" data-ng-model="filterOptions.filter[filterOptions.filterBy]" placeholder="Filter By {{filterOptions.filterBy}}..." pf-focused="true" autofocus>
         </div>
       </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-6">
       <div class="form-group">
-
+        <div class="input-group" style="font-size: 20px; line-height: 1.5em;">
+          <select name="orderBy" pf-select data-ng-model="filterOptions.orderBy" data-ng-options="item as item.name for item in combo.orderBy">
+            <option value="">No Order By</option>
+          </select>
+          &nbsp;&nbsp;<span class="fa fa-sort-alpha-asc"></span>
+        </div>
       </div>
     </div>
-    <div class="col-sm-3">
-      <div class="form-group">
-        <ui-select name="orderBy" ng-model="filterOptions.orderBy" required>
-          <ui-select-match placeholder="Order by">{{$select.selected.name}}</ui-select-match>
-          <ui-select-choices repeat="item in combo.orderBy | filter: $select.search">
-            <div ng-bind-html="item.name | highlight: $select.search"></div>
-          </ui-select-choices>
-        </ui-select>
-      </div>
-    </div>
-    <div class="col-sm-1">
-      <button type="button" data-ng-click="refresh()" class="btn btn-link"><span class="pficon pficon-refresh"></span> Refresh</button>
+    <div class="col-sm-2">
+      <button type="button" data-ng-click="search()" class="btn btn-link"><span class="fa fa-search"></span> Search</button>
     </div>
   </div>
 </form>
@@ -48,7 +44,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr data-ng-repeat="row in customers | orderBy: filterOptions.orderBy.value">
+  <tr data-ng-repeat="row in customers | filter: filterOptions.filter | orderBy: filterOptions.orderBy.value">
     <td width="8"><span data-ng-bind="$index + 1"></span></td>
     <td><span data-ng-bind="row.customername"></span></td>
     <td><span data-ng-bind="row.id"></span></td>
@@ -63,3 +59,11 @@
   </tr>
   </tbody>
 </table>
+<ul class="pager">
+  <li class="next">
+    <a href="" data-ng-click="refresh()">
+      <span class="pficon pficon-refresh"></span>
+      Refresh
+    </a>
+  </li>
+</ul>
