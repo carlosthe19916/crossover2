@@ -6,9 +6,18 @@ angular.module('customer').controller('Customer.ListController', ['$scope', '$st
 
     $scope.customers = [];
 
+
+
+    $scope.drinks = ['tea', 'coffee', 'water'];
+    $scope.pets = ['Dog', 'Cat', 'Chicken'];
+    $scope.pet = $scope.pets[0];
+    $scope.fruit = 'orange';
+
+
     $scope.filterOptions = {
-      filterText: undefined,
-      filterBy: undefined
+      filter: {},
+      filterBy: '$',
+      orderBy: undefined
     };
 
     $scope.combo = {
@@ -17,10 +26,11 @@ angular.module('customer').controller('Customer.ListController', ['$scope', '$st
         {name: 'Customer Name', value: 'customername'},
         {name: 'Product Name', value: 'productname'},
         {name: 'status', value: 'status'}
+      ],
+      filterBy: [
+        {name: 'Customer Name', value: 'customername'},
+        {name: 'Product Name', value: 'productname'}
       ]
-    };
-    $scope.combo.selected = {
-      orderBy: undefined
     };
 
     $scope.refresh = function() {
@@ -37,6 +47,6 @@ angular.module('customer').controller('Customer.ListController', ['$scope', '$st
     $scope.edit = function (customer) {
       $state.go('app.customer.detail', {customerId: customer.id});
     };
-    
+
   }
 ]);

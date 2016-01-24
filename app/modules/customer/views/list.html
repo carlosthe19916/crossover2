@@ -2,20 +2,26 @@
 <h1>
   <strong>Customers</strong>
 </h1>
-
 <hr>
 <form role="form">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
       <div class="form-group">
         <div class="input-group">
-          <input type="text" name="filterText" class="form-control" data-ng-model="filterOptions.filterText" placeholder="Filter text" pf-focused="true" autofocus>
+          <select pf-select data-ng-model="filterOptions.filterBy" data-ng-options="item.value as item.name for item in combo.filterBy">
+          </select>
+          <input type="text" name="filterText" class="form-control" data-ng-model="dd" placeholder="Filter text" pf-focused="true" autofocus>
         </div>
       </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <div class="form-group">
-        <ui-select name="orderBy" ng-model="combo.selected.orderBy" required>
+
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <ui-select name="orderBy" ng-model="filterOptions.orderBy" required>
           <ui-select-match placeholder="Order by">{{$select.selected.name}}</ui-select-match>
           <ui-select-choices repeat="item in combo.orderBy | filter: $select.search">
             <div ng-bind-html="item.name | highlight: $select.search"></div>
@@ -34,15 +40,15 @@
   <thead>
   <tr>
     <th>#</th>
-    <th>Id</th>
     <th>Customer name</th>
+    <th>Id</th>
     <th>Product name</th>
     <th>Status</th>
     <th>Action</th>
   </tr>
   </thead>
   <tbody>
-  <tr data-ng-repeat="row in customers | filter: filterOptions.filterText | orderBy: combo.selected.orderBy.value">
+  <tr data-ng-repeat="row in customers | orderBy: filterOptions.orderBy.value">
     <td width="8"><span data-ng-bind="$index + 1"></span></td>
     <td><span data-ng-bind="row.customername"></span></td>
     <td><span data-ng-bind="row.id"></span></td>
