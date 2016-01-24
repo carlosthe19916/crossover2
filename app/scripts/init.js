@@ -3,22 +3,20 @@
 //Start by defining the main module and adding the module dependencies
 angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
 
-// Config module
+// Config url prefix
 angular.module(ApplicationConfiguration.applicationModuleName).config(['$locationProvider',
   function ($locationProvider) {
     $locationProvider.hashPrefix('!');
   }
 ]);
 
+// Config base url of SRA.jar
 angular.module(ApplicationConfiguration.applicationModuleName).config(function (sraProvider) {
   sraProvider.restUrl = 'http://localhost:8080/SRA';
 });
 
 angular.module(ApplicationConfiguration.applicationModuleName).run(function (localStorageService, Auth) {
-  var session = localStorageService.get('crossover');
-  if(session) {
-    Auth.init(session);
-  }
+  Auth.load();
 });
 
 //Then define the init function for starting up the application

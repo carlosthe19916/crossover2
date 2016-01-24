@@ -1,13 +1,7 @@
 'use strict';
 
-angular.module(ApplicationConfiguration.applicationModuleName).controller('HeaderController', ['$scope', '$state', 'Menus', 'Auth',
-  function ($scope, $state, Menus, Auth) {
-
-    //Expose user session
-    $scope.user = Auth.authz.data;
-    $scope.logout = function() {
-
-    };
+angular.module(ApplicationConfiguration.applicationModuleName).controller('HeaderController', ['$scope', '$state', 'Menus',
+  function ($scope, $state, Menus) {
 
     // Expose view variables
     $scope.$state = $state;

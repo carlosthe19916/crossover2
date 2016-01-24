@@ -1,7 +1,6 @@
 'use strict';
 
 // Init the application configuration module for AngularJS application
-/* jshint ignore:start */
 var ApplicationConfiguration = (function () {
 
   // Init module configuration options
@@ -43,4 +42,3 @@ var ApplicationConfiguration = (function () {
   };
 
 })();
-/* jshint ignore:end */

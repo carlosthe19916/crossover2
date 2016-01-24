@@ -6,7 +6,7 @@
     <span class="icon-bar"></span>
   </button>
   <a data-ui-sref="home" class="navbar-brand">
-    <img src="images/logo-sistcoop.svg" alt="Sistcoop Enterprise application">
+    <img src="images/brand.svg" alt="Crossover Custormer Application">
   </a>
 </div>
 
@@ -23,7 +23,7 @@
         <a ng-switch-default data-ui-sref="{{item.state}}" data-ng-bind="item.title"></a>
       </li>
     </ul>
-    <ul class="nav navbar-nav navbar-utility">
+    <ul class="nav navbar-nav navbar-utility" data-ng-controller="SessionController">
       <li>
         <a href="">
           <strong>User: </strong>
@@ -36,7 +36,7 @@
           <span class="username">{{user.fullName || user.metadata.name}}</span> <b class="caret"></b>
         </a>
         <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
-          <li role="menuitem" data-ng-controller="LogoutController">
+          <li role="menuitem">
             <a href="" data-ng-click="logout()">Log out</a>
           </li>
         </ul>

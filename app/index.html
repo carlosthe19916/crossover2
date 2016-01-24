@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="bower_components/angular-patternfly/dist/styles/angular-patternfly.css" />
     <link rel="stylesheet" href="bower_components/patternfly/dist/css/patternfly.css" />
     <link rel="stylesheet" href="bower_components/patternfly/dist/css/patternfly-additions.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-select/dist/css/bootstrap-select.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -75,6 +76,7 @@
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="bower_components/jquery.maskedinput/dist/jquery.maskedinput.js"></script>
+    <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -94,15 +96,14 @@
     <script src="/scripts/config/header.js"></script>
     <script src="/scripts/config/menus.js"></script>
     <script src="/scripts/config/routes.js"></script>
-    <script src="/scripts/controllers/main.js"></script>
-    <script src="/scripts/controllers/authentication/loginController.js"></script>
-    <script src="/scripts/controllers/authentication/logoutController.js"></script>
-    <script src="/scripts/directives/utils.js"></script>
+    <script src="/scripts/controllers/loginController.js"></script>
+    <script src="/scripts/controllers/sessionController.js"></script>
+    <script src="/scripts/directives/directives.js"></script>
     <script src="/scripts/factories/auth.js"></script>
-    <script src="/scripts/factories/cryptoUtil.js"></script>
     <script src="/scripts/factories/models.js"></script>
+    <script src="/scripts/factories/utils.js"></script>
     <script src="/scripts/providers/datemask.js"></script>
-    <script src="/scripts/services/utils.js"></script>
+    <script src="/scripts/services/services.js"></script>
     <!-- endbuild -->
 
 </body>
