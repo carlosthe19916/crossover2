@@ -1,6 +1,12 @@
-$icon-font-path: "../bower_components/patternfly-sass/assets/fonts/patternfly/";
+//$icon-font-path: "../bower_components/patternfly-sass/assets/fonts/patternfly/";
+$icon-font-path: "../styles/fonts/bootstrap/";
+$font-path: "../styles/fonts/patternfly";
+$fa-font-path: "../styles/fonts/font-awesome/";
+
+$navbar-pf-bg-color: #393F45 !default;
 
 // bower:scss
+@import "patternfly-sass/assets/stylesheets/_patternfly.scss";
 // endbower
 
 .login-pf {
@@ -31,9 +37,6 @@ $icon-font-path: "../bower_components/patternfly-sass/assets/fonts/patternfly/";
 .has-error .form-control {
   border-color: #f05050 !important;
 }
-
-
-
 
 .browsehappy {
   margin: 0.2em 0;
@@ -87,15 +90,6 @@ body {
   .btn {
     font-size: 21px;
     padding: 14px 24px;
-  }
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-
-  p + h4 {
-    margin-top: 28px;
   }
 }
 
