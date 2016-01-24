@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module(ApplicationConfiguration.applicationModuleName).config(function ($provide) {
+angular.module('mean').config(function ($provide) {
 
   /*$provide.decorator('datepickerPopupDirective', function ($delegate) {
     var directive = $delegate[0];
@@ -16,4 +16,7 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(function (
     return $delegate;
   });*/
 
-});
+}).config( ['$compileProvider',function( $compileProvider ) {
+  //For Skype calls
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|skype):/);
+}]);

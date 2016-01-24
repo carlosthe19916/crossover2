@@ -32,7 +32,8 @@ angular.module('customer').config(['$stateProvider', '$urlRouterProvider',
           }
         },
         ncyBreadcrumb: {
-          label: 'Customer detail'
+          label: 'Customer detail',
+          parent: 'app.customer.list'
         }
       })
       .state('app.customer.detail.notes', {

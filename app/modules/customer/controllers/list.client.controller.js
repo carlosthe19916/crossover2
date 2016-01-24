@@ -41,7 +41,7 @@ angular.module('customer').controller('Customer.ListController', ['$scope', '$st
     $scope.search();
 
     $scope.edit = function (customer) {
-      $state.go('app.customer.detail', {customerId: customer.id});
+      $state.go('app.customer.detail.notes', {customerId: customer.id});
     };
 
   }
