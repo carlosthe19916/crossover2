@@ -6,8 +6,6 @@ angular.module('customer').controller('Customer.Detail.NotesController', ['$scop
 
     $scope.working = false;
 
-    $scope.customerDetail = customerDetail.data;
-
     $scope.view = {
       notes: undefined,
       status: undefined

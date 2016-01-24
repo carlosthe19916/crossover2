@@ -1,12 +1,10 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('customer').controller('Customer.Detail.VisitController', ['$scope', '$state', 'toastr', 'customerDetail', 'SRACustomer',
-  function ($scope, $state, toastr, customerDetail, SRACustomer) {
+angular.module('customer').controller('Customer.Detail.VisitController', ['$scope', '$state', 'toastr', 'customerDetail', 'SGDialog', 'SRACustomer',
+  function ($scope, $state, toastr, customerDetail, SGDialog, SRACustomer) {
 
     $scope.working = false;
-
-    $scope.customerDetail = customerDetail.data;
 
     $scope.view = {
       date: undefined,
@@ -25,10 +23,24 @@ angular.module('customer').controller('Customer.Detail.VisitController', ['$scop
     };
 
     $scope.save = function () {
-      SRACustomer.$saveVisit($scope.visit).then(function (response) {
-        toastr.success('Note successfully saved.');
+      SGDialog.confirm('Save', 'Are you sure to save the Visit?', function () {
+        $scope.working = true;
+        SRACustomer.$saveVisit($scope.view).then(function (response) {
+          $scope.working = false;
+          toastr.success('Visit successfully saved.');
+          $state.reload();
+        });
       });
     };
+
+    $scope.clear = function () {
+      $scope.view = {
+        date: undefined,
+        time: undefined,
+        notes: undefined,
+        action: undefined
+      };
+    }
 
   }
 ]);

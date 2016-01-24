@@ -8,6 +8,15 @@
       </div>
     </div>
   </div>
+  <div class="form-group" data-ng-class="{ 'has-error' : form.time.$invalid && form.$submitted }">
+    <label class="col-sm-2 control-label"><span class="required">*</span> Time:</label>
+    <div class="col-sm-2">
+      <uib-timepicker name="time" ng-model="view.time" hour-step="1" minute-step="1" show-meridian="true" required></uib-timepicker>
+      <div data-ng-messages="form.time.$error" data-ng-if="form.$submitted">
+        <div class="has-error" data-ng-message="required">Insert time.</div>
+      </div>
+    </div>
+  </div>
   <div class="form-group" data-ng-class="{ 'has-error' : form.action.$invalid && form.$submitted }">
     <label class="col-sm-2 control-label"><span class="required">*</span> Action:</label>
     <div class="col-sm-3">
