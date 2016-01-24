@@ -512,9 +512,9 @@ module.exports = function (grunt) {
       target: {
         options: {
           war_dist_folder: '<%= yeoman.dist %>',
-          war_name: 'ROOT',
+          war_name: 'crossover',
           webxml_welcome: 'index.html',
-          webxml_display_name: 'Root',
+          webxml_display_name: 'Crossover',
           webxml_mime_mapping: [
             {
               extension: 'woff',
