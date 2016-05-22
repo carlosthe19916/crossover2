@@ -1,32 +1,21 @@
 'use strict';
 
-angular.module(ApplicationConfiguration.applicationModuleName).controller('HeaderController', ['$scope', '$state', 'Menus', 'SRAAuth', 'Auth',
-  function ($scope, $state, Menus, SRAAuth, Auth) {
+angular.module(ApplicationConfiguration.applicationModuleName)
+  .controller('HeaderController', ['$scope', '$state', 'menuService', 'Auth',
+    function ($scope, $state, menuService, Auth) {
 
-    $scope.user = Auth.authz.data;
-    $scope.logout = function () {
-      SRAAuth.$logout().then(function (response) {
-        Auth.clean();
-        $state.go('login');
-      });
-    };
+      /*Security information*/
+      $scope.user = {
+        username: Auth.authz.user.username
+      };
+      $scope.logout = function () {
+        Auth.$logout();
+      };
 
-    // Expose view variables
-    $scope.$state = $state;
+      // Expose view variables
+      $scope.$state = $state;
 
-    // Get the topbar menu
-    $scope.menu = Menus.getMenu('topbar');
+      // Get the topbar menu
+      $scope.menu = menuService.getMenu('topbar');
 
-    // Toggle the menu items
-    $scope.isCollapsed = false;
-    $scope.toggleCollapsibleMenu = function () {
-      $scope.isCollapsed = !$scope.isCollapsed;
-    };
-
-    // Collapsing the menu after navigation
-    $scope.$on('$stateChangeSuccess', function () {
-      $scope.isCollapsed = false;
-    });
-
-  }
-]);
+    }]);

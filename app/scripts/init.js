@@ -11,12 +11,8 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
 ]);
 
 // Config base url of SRA.jar
-angular.module(ApplicationConfiguration.applicationModuleName).config(function (sraProvider) {
-  sraProvider.restUrl = 'http://localhost:8080/SRA';
-});
-
-angular.module(ApplicationConfiguration.applicationModuleName).run(function (localStorageService, Auth) {
-  Auth.load();
+angular.module(ApplicationConfiguration.applicationModuleName).config(function (crossoverProvider) {
+  crossoverProvider.restUrl = 'http://localhost:8080';
 });
 
 //Then define the init function for starting up the application
@@ -44,4 +40,7 @@ angular.element(document).ready(function () {
 
 });
 
-
+// Config base url of SRA.jar
+angular.module(ApplicationConfiguration.applicationModuleName).run(function (localStorageService, Auth) {
+  Auth.authz = angular.fromJson(localStorageService.get('crossover_session'));
+});

@@ -1,0 +1,29 @@
+<form name="form" class="form-horizontal" novalidate>
+<div class="modal-header">
+  <h3 class="modal-title">Support</h3>
+</div>
+<div class="modal-body">
+    <div class="form-group" data-ng-class="{ 'has-error' : form.subject.$invalid && form.$submitted }">
+      <label class="col-sm-3 control-label"><span class="required">*</span> Subject:
+        <i class="fa fa-info-circle text-muted" tooltip-placement="right" uib-tooltip="Subject text"></i>
+      </label>
+      <div class="col-sm-9">
+        <input name="subject" type="text" data-ng-model="data.subject" data-ng-minlength="1" data-ng-maxlength="200" class="form-control" pf-focused="true" autofocus required/>
+      </div>
+    </div>
+    <div class="form-group" data-ng-class="{ 'has-error' : form.details.$invalid && form.$submitted }">
+      <label class="col-sm-3 control-label"><span class="required">*</span> Details:
+        <i class="fa fa-info-circle text-muted" tooltip-placement="right" uib-tooltip="Details text"></i>
+      </label>
+      <div class="col-sm-9">
+        <textarea name="details" data-ng-model="data.details" data-ng-minlength="1" data-ng-maxlength="600" class="form-control" required></textarea>
+      </div>
+    </div>
+</div>
+<div class="modal-footer">
+  <button sg-save>
+    <span>Save</span>
+  </button>
+  <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+</div>
+</form>

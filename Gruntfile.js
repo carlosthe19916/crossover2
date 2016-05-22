@@ -1,4 +1,4 @@
-// Generated on 2015-11-17 using generator-angular 0.14.0
+// Generated on 2016-03-05 using generator-angular 0.15.1
 'use strict';
 
 // # Globbing
@@ -44,7 +44,11 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        files: [
+          '<%= yeoman.app %>/scripts/{,*/}*.js',
+          '<%= yeoman.app %>/modules/**/**/*.js',
+          '<%= yeoman.app %>/modules/**/views/**/*.html'
+        ],
         tasks: ['newer:jshint:all', 'newer:jscs:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -211,15 +215,15 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the app
     wiredep: {
       app: {
-        src: ['<%= yeoman.app %>/index.html'],
-        ignorePath: /\.\.\//,
+        src: ['<%= yeoman.app %>/index.html', '<%= yeoman.app %>/503.html'],
+        ignorePath:  /\.\.\//,
         exclude: [ 'bower_components/bootstrap/dist/css/bootstrap.css' ]
       },
       test: {
         devDependencies: true,
         src: '<%= karma.unit.configFile %>',
-        ignorePath: /\.\.\//,
-        fileTypes: {
+        ignorePath:  /\.\.\//,
+        fileTypes:{
           js: {
             block: /(([\s\t]*)\/{2}\s*?bower:\s*?(\S*))(\n|\r|.)*?(\/{2}\s*endbower)/gi,
             detect: {
@@ -233,7 +237,10 @@ module.exports = function (grunt) {
       },
       sass: {
         src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-        ignorePath: /(\.\.\/){1,2}bower_components\//
+        ignorePath: /(\.\.\/){1,2}bower_components\//,
+        exclude: [
+          'bootstrap'
+        ]
       }
     },
 
@@ -382,7 +389,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'mean',
+          module: 'crossover',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
@@ -434,17 +441,17 @@ module.exports = function (grunt) {
         }, {
           expand: true,
           cwd: '.',
-          src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
+          src: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/*',
           dest: '<%= yeoman.dist %>'
         }, {
           expand: true,
-          cwd: 'bower_components/patternfly/dist',
-          src: 'fonts/*',
+          cwd: '.',
+          src: 'bower_components/patternfly-sass/assets/fonts/patternfly/*',
           dest: '<%= yeoman.dist %>'
         }, {
           expand: true,
-          cwd: 'bower_components/patternfly/components/font-awesome',
-          src: 'fonts/*',
+          cwd: '.',
+          src: 'bower_components/font-awesome-sass/assets/fonts/font-awesome/*',
           dest: '<%= yeoman.dist %>'
         }, {
           expand: true,
@@ -512,9 +519,9 @@ module.exports = function (grunt) {
       target: {
         options: {
           war_dist_folder: '<%= yeoman.dist %>',
-          war_name: 'crossover',
+          war_name: 'appopensales',
           webxml_welcome: 'index.html',
-          webxml_display_name: 'Crossover',
+          webxml_display_name: 'Opensales',
           webxml_mime_mapping: [
             {
               extension: 'woff',

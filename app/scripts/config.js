@@ -16,6 +16,7 @@ var ApplicationConfiguration = (function () {
     'ui.utils',
     'ui.utils.masks',
     'patternfly',
+    'patternfly.charts',
     'restangular',
     'toastr',
     'LocalStorageModule'

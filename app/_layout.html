@@ -1,0 +1,30 @@
+<div data-ng-include="'_header.html'"></div>
+<div class="nav-pf-vertical nav-pf-vertical-with-secondary-nav" data-ng-class="{'collapsed' : isCollapsed}">
+  <ul class="list-group">
+    <li class="list-group-item" ui-sref-active="active">
+      <a href="" ui-sref="app.home">
+        <span class="pficon pficon-cluster"></span>
+        <span class="list-group-item-value">Clusters</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="container-fluid container-cards-pf container-pf-nav-pf-vertical container-pf-nav-pf-vertical-with-secondary" data-ng-class="{'collapsed-nav' : isCollapsed}">
+  <div ui-view></div>
+  <footer>
+    <hr>
+    <div class="row">
+      <div class="widget col-md-9 widget_text">
+        <div class="textwidget"><p>
+          Crossover is a sponsored project. Check our <a href="" data-ng-click="openPrivacyPolicyOrTermOfUse()">Privacy police</a> & <a href="" data-ng-click="openPrivacyPolicyOrTermOfUse()">Terms of use</a>
+          <br>
+          For more information contact us on <a href="" data-ng-click="openSupport()">Support.</a>
+        </p>
+        </div>
+      </div>
+      <div class="widget col-md-3 widget_text">
+        <div class="textwidget"><a href="" id="logo-crossover">Crossover</a></div>
+      </div>
+    </div>
+  </footer>
+</div>

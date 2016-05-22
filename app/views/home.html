@@ -1,0 +1,116 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="navbar-brand">
+        <i class="fa fa-building"></i>
+      </div>
+      <span class="navbar-brand" href="">Menu</span>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="" data-ng-click="salesManDataShow=false">Pie chart</a></li>
+        <li><a href="" data-ng-click="lastYearDataShow=false">Bar chart</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="row row-cards-pf">
+  <div class="col-xs-12 col-sm-6 col-md-6" data-ng-hide="salesManDataShow">
+    <div class="card-pf card-pf-utilization">
+      <h2 class="card-pf-title">
+        Total sales per men
+        <div class="pull-right">
+          <a href="" data-ng-click="loadSalesManData()"><i class="pficon pficon-refresh"></i></a>
+          <a href="" data-ng-click="salesManDataShow=true"><i class="pficon pficon-close"></i></a>
+        </div>
+      </h2>
+      <div class="card-pf-body">
+        <p class="card-pf-utilization-details">
+          <span class="card-pf-utilization-card-details-count" data-ng-bind="salesManData.data.columns.length"></span>
+          <span class="card-pf-utilization-card-details-description">
+            <span class="card-pf-utilization-card-details-line-1">Mean</span>
+            <span class="card-pf-utilization-card-details-line-2">found</span>
+          </span>
+        </p>
+        <div pf-c3-chart id="salesManData" config="salesManData"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6" data-ng-hide="lastYearDataShow">
+    <div class="card-pf card-pf-utilization">
+      <h2 class="card-pf-title">
+        Total sales per month
+        <div class="pull-right">
+          <a href="" data-ng-click="loadLastYearData()"><i class="pficon pficon-refresh"></i></a>
+          <a href="" data-ng-click="lastYearDataShow=true"><i class="pficon pficon-close"></i></a>
+        </div>
+      </h2>
+      <div class="card-pf-body">
+        <p class="card-pf-utilization-details">
+          <span class="card-pf-utilization-card-details-count">12</span>
+          <span class="card-pf-utilization-card-details-description">
+            <span class="card-pf-utilization-card-details-line-1">Months</span>
+            <span class="card-pf-utilization-card-details-line-2">available</span>
+          </span>
+        </p>
+        <div pf-c3-chart id="lastYearData" config="lastYearData"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row row-cards-pf">
+  <div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="card-pf card-pf-utilization">
+      <h2 class="card-pf-title">
+        Top sales order
+      </h2>
+      <div class="card-pf-body">
+        <table class="table table-bordered table-condensed table-striped">
+          <thead>
+          <tr>
+            <td class="text-right">#</td>
+            <td>Username</td>
+            <td class="text-right">Value</td>
+            <td class="text-right">Quantity</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr data-ng-repeat="item in topSalesOrders">
+            <td class="text-right">{{$index+1}}</td>
+            <td>{{item.userName}}</td>
+            <td class="text-right">{{item.value | number: 2}}</td>
+            <td class="text-right">{{item.qty}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="card-pf card-pf-utilization">
+      <h2 class="card-pf-title">
+        Top sales men in last 3 month
+      </h2>
+      <div class="card-pf-body">
+        <table class="table table-bordered table-condensed table-striped">
+          <thead>
+          <tr>
+            <td class="text-right">#</td>
+            <td>Username</td>
+            <td class="text-right">Quantity</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr data-ng-repeat="item in topSalesMen">
+            <td class="text-right">{{$index+1}}</td>
+            <td>{{item[0]}}</td>
+            <td class="text-right">{{item[1] | number: 2}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
